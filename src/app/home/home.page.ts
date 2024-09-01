@@ -9,9 +9,14 @@ import { Router } from '@angular/router';
 export class HomePage {
 
   constructor(private router: Router) {}
+  
 
   iralogin() {
-    // Navega a la página de inicio
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login']); // Navega a la página de perfil
   }
+
+  iraperfil() {
+    this.router.navigate(['/perfil']); // Navega a la página de perfil
+  }
+
 }

@@ -1,20 +1,35 @@
 /* src/app/login/login.page.scss */
-.center-content {
+
+/* Reutilizar estilos de home-container para centrar el contenido */
+.home-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
+    text-align: center;
+    margin-top: 20px;
   }
   
   .center-button-container {
     display: flex;
-    justify-content: center;
-    margin-top: 100%;
+    justify-content: center; /* Centra horizontalmente */
+    margin-top: 20px; /* Añade un margen superior */
   }
   
-  /* CSS para centrar placeholders */
-  .center-placeholder::part(native) {
-    text-align: center; /* Centra el texto del placeholder */
+  .logo {
+    width: 150px; /* Ajusta el tamaño de la imagen */
+    height: auto;
+    margin-bottom: 20px; /* Espacio debajo de la imagen */
+  }
+  
+  h2 {
+    font-size: 24px;
+    color: #333; /* Color del saludo */
+  }
+  
+  p {
+    font-size: 16px;
+    color: #666; /* Color del texto secundario */
   }
   
