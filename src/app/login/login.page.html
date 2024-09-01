@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="false" class="ion-text-center">
+  <div class="center-content">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Usuario</ion-label>
+        <ion-input class="center-placeholder" placeholder="demo@demo.cl" maxlength="8"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input class="center-placeholder" type="password" placeholder="*****"></ion-input>
+      </ion-item>
+
+      <div class="center-button-container">
+        <ion-button size="small" (click)="iralHome()">Ir a Home</ion-button>
+      </div>
+    </ion-list>
+  </div>
+</ion-content>

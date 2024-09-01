@@ -1,0 +1,20 @@
+/* src/app/login/login.page.scss */
+.center-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .center-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 100%;
+  }
+  
+  /* CSS para centrar placeholders */
+  .center-placeholder::part(native) {
+    text-align: center; /* Centra el texto del placeholder */
+  }
+  
