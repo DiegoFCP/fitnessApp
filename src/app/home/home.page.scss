@@ -92,3 +92,26 @@ ion-card {
   height: auto;
   margin-bottom: 20px;
 }
+
+.progress-image {
+  width: 100%;
+  height: auto;
+  max-width: 600px; /* Limitar el ancho máximo para dispositivos grandes */
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.summary-card, .progress-card, .tip-card {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private alertController: AlertController) {}
 
   // Método para navegar a la página de login
   iralogin() {
@@ -21,16 +22,24 @@ export class HomePage {
   }
 
   // Método para iniciar un entrenamiento
-  iniciarEntrenamiento() {
-    console.log('Iniciando entrenamiento...');
-    // Aquí podrías agregar lógica para iniciar un entrenamiento o navegar a una página de entrenamiento
-    // this.router.navigate(['/entrenamiento']);
+  async iniciarEntrenamiento() {
+    const alert = await this.alertController.create({
+      header: 'Entrenamiento',
+      message: 'Iniciando entrenamiento...',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   // Método para registrar comida
-  registrarComida() {
-    console.log('Registrando comida...');
-    // Aquí podrías agregar lógica para registrar comida o navegar a una página de registro de comida
-    // this.router.navigate(['/registro-comida']);
+  async registrarComida() {
+    const alert = await this.alertController.create({
+      header: 'Registrar Comida',
+      message: 'Registrando comida...',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 }
