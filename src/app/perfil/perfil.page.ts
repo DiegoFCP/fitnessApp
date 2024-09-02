@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPage implements OnInit {
+  nombre: string = ''; // Propiedad para almacenar el nombre del usuario
+  estatura: number | null = null; // Propiedad para almacenar la estatura del usuario
+  peso: number | null = null; // Propiedad para almacenar el peso del usuario
   userProfileImage: string | null = null; // Propiedad para almacenar la imagen de perfil del usuario
 
   constructor(private router: Router) {}
@@ -21,6 +24,22 @@ export class PerfilPage implements OnInit {
   iralHome() {
     // Navega a la página de inicio
     this.router.navigate(['/home']);
+  }
+
+  guardarPerfil() {
+    // Aquí puedes implementar la lógica para guardar el perfil del usuario
+    // Puede ser una llamada a un servicio que guarda los datos en una base de datos o almacenamiento local
+
+    console.log('Guardando perfil del usuario...');
+    console.log('Nombre:', this.nombre);
+    console.log('Estatura:', this.estatura);
+    console.log('Peso:', this.peso);
+
+    // Simulación de guardado de datos (aquí iría la lógica real de guardado)
+    // Puedes implementar una llamada a un servicio de API para guardar estos datos
+
+    // Mostrar una notificación al usuario sobre el guardado exitoso
+    alert('Perfil guardado con éxito!');
   }
 
   // Método para cargar la imagen de perfil del usuario (puede ser de una API o almacenamiento local)

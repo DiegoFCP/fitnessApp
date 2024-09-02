@@ -1,39 +1,54 @@
-/* src/app/profile/profile.page.scss */
+/* src/app/perfil/perfil.page.scss */
 
-.profile-container {
+.home-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     text-align: center;
+    background-color: var(--ion-background-color); /* Fondo consistente con la página de inicio */
+    color: var(--ion-text-color); /* Color de texto global */
+    padding: 20px;
+  }
+  
+  ion-card {
+    width: 100%;
+    max-width: 400px; /* Limitar el ancho máximo del card para crear un marco compacto */
+    margin: 20px auto; /* Centrando el card */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añadir sombra para resaltar el marco */
+  }
+  
+  h2 {
+    font-size: 24px;
+    color: var(--ion-color-primary); /* Color primario para el encabezado */
+    margin-bottom: 20px;
+  }
+  
+  ion-item {
+    margin-bottom: 15px;
   }
   
   .profile-avatar {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    width: 300px; /* Aumenta el tamaño del contenedor del avatar */
-    height: 300px; /* Aumenta el tamaño del contenedor del avatar */
-    border-radius: 50%;
-    overflow: hidden;
-    
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
     display: flex;
-    align-items: center;
     justify-content: center;
-  }
-  
-  ion-list {
-    width: 90%;
-    max-width: 500px;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--ion-background-color); /* Fondo del avatar */
   }
   
   .center-button-container {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 10px;
   }
   
-  ion-icon {
-    font-size: 120px; /* Aumenta el tamaño del icono */
-    color: #8c8c8c; /* Color del icono */
+  .action-button {
+    margin-top: 20px;
+    background-color: var(--ion-color-primary); /* Usar color primario */
+    color: var(--ion-color-primary-contrast); /* Contraste para texto */
   }
   

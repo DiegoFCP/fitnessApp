@@ -1,44 +1,46 @@
 <!-- src/app/perfil/perfil.page.html -->
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary"> <!-- Usar color primario para la barra de herramientas -->
     <ion-title>Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Perfil</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding" color="light"> <!-- Fondo claro consistente -->
+  <div class="home-container centered-content"> <!-- Usando clases para mantener consistencia -->
+    <ion-card> <!-- Añadiendo ion-card para crear un marco -->
+      <ion-card-content>
+        <ion-avatar class="profile-avatar">
+          <ion-icon name="person-circle-outline" size="large"></ion-icon> <!-- Icono de perfil por defecto -->
+        </ion-avatar>
+        
+        <h2 style="color: var(--ion-color-primary);">Mi Perfil</h2> <!-- Usar color primario para el encabezado -->
+        
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input type="text" [(ngModel)]="nombre" name="nombre"></ion-input>
+          </ion-item>
 
-  <div class="profile-container">
-    <ion-avatar class="profile-avatar">
-      <!-- Mostrar icono predeterminado si no hay imagen de usuario -->
-      <ion-icon *ngIf="!userProfileImage" name="person-circle-outline" size="large"></ion-icon>
-      <!-- Mostrar imagen de usuario si está disponible -->
-      <img *ngIf="userProfileImage" [src]="userProfileImage" alt="Imagen de Perfil">
-    </ion-avatar>
+          <ion-item>
+            <ion-label position="floating">Estatura (cm)</ion-label>
+            <ion-input type="number" [(ngModel)]="estatura" name="estatura"></ion-input>
+          </ion-item>
 
-    <ion-list>
-      <ion-item>
-        <ion-label position="floating">Nombre</ion-label>
-        <ion-input value="Juan Perez"></ion-input>
-      </ion-item>
+          <ion-item>
+            <ion-label position="floating">Peso (kg)</ion-label>
+            <ion-input type="number" [(ngModel)]="peso" name="peso"></ion-input>
+          </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">Estatura (cm)</ion-label>
-        <ion-input type="number" value="180"></ion-input>
-      </ion-item>
+          <div class="center-button-container">
+            <ion-button expand="block" color="primary" (click)="guardarPerfil()">Guardar</ion-button>
+          </div>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
 
-      <ion-item>
-        <ion-label position="floating">Peso (kg)</ion-label>
-        <ion-input type="number" value="75"></ion-input>
-      </ion-item>
-    </ion-list>
-
+    <!-- Botón para ir a la página de inicio -->
     <div class="center-button-container">
-      <ion-button expand="block" (click)="iralHome()">Ir a Home</ion-button>
+      <ion-button size="small" color="secondary" (click)="iralHome()">Ir a Home</ion-button>
     </div>
   </div>
 </ion-content>

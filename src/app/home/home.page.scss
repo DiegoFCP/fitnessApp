@@ -108,3 +108,10 @@ ion-card {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+
+
+ion-button {
+  width: 100%; /* Asegura que los botones ocupen todo el ancho disponible */
+  height: 100%;
+}

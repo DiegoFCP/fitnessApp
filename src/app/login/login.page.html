@@ -1,33 +1,42 @@
 <!-- src/app/login/login.page.html -->
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary"> <!-- Usar color primario para la barra de herramientas -->
     <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="false" class="ion-padding">
-  <div class="home-container"> <!-- Usando la misma clase para mantener consistencia -->
-    <ion-img src="assets/img/logo.png" alt="Logo de FitnessApp" class="logo"></ion-img>
-    
-    <h2>¡Inicia Sesión en FitnessApp!</h2>
-    <p>Por favor ingresa tus credenciales.</p>
+<ion-content [fullscreen]="true" class="ion-padding" color="light"> <!-- Fondo claro consistente -->
+  <div class="home-container centered-content"> <!-- Usando clases para mantener consistencia -->
+    <ion-card> <!-- Añadiendo ion-card para crear un marco -->
+      <ion-card-content>
+        <ion-img src="assets/img/logo.png" alt="Logo de FitnessApp" class="logo"></ion-img>
+        
+        <h2 style="color: var(--ion-color-primary);">¡Inicia Sesión en FitnessApp!</h2> <!-- Usar color primario para el encabezado -->
+        <p style="color: var(--ion-text-color);">Por favor ingresa tus credenciales.</p>
 
-    <ion-list>
-      <ion-item>
-        <ion-label position="floating">Usuario</ion-label>
-        <br>
-        <ion-input class="center-placeholder" placeholder="demo@demo.cl" maxlength="8"></ion-input>
-      </ion-item>
+        <form (ngSubmit)="onLogin()">
+          <ion-list>
+            <ion-item>
+              <ion-label position="floating">Usuario</ion-label>
+              <ion-input type="text" [(ngModel)]="username" name="username" required></ion-input>
+            </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">Password</ion-label>
-        <br>
-        <ion-input class="center-placeholder" type="password" placeholder="*****"></ion-input>
-      </ion-item>
+            <ion-item>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
+            </ion-item>
 
-      <div class="center-button-container">
-        <ion-button expand="block" (click)="iralHome()">Ir a Home</ion-button>
-      </div>
-    </ion-list>
+            <div class="center-button-container">
+              <ion-button expand="block" color="primary" type="submit">Iniciar Sesión</ion-button> <!-- Usar color primario para el botón -->
+            </div>
+          </ion-list>
+        </form>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Opción para navegar al registro -->
+    <div class="center-button-container">
+      <ion-button size="small" color="secondary" (click)="iraregistro()">Ir a Registro</ion-button> <!-- Usar color secundario -->
+    </div>
   </div>
 </ion-content>
