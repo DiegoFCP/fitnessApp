@@ -9,11 +9,11 @@
     </ion-header>
     <ion-content class="ion-padding">
       <ion-list>
-        <ion-item (click)="iraperfil()">
+        <ion-item class="menu-item" (click)="iraperfil()">
           <ion-icon name="person-outline" slot="start"></ion-icon>
           <ion-label>Mi Perfil</ion-label>
         </ion-item>
-        <ion-item (click)="iralogin()">
+        <ion-item class="menu-item" (click)="iralogin()">
           <ion-icon name="log-in-outline" slot="start"></ion-icon>
           <ion-label>Login</ion-label>
         </ion-item>
@@ -33,23 +33,66 @@
       </ion-toolbar>
     </ion-header>
 
-    <ion-content [fullscreen]="false" class="ion-padding">
+    <ion-content [fullscreen]="true" class="ion-padding">
       <div class="home-container centered-content">
         <ion-img src="assets/img/logo.png" alt="Logo de FitnessApp" class="logo"></ion-img>
-    
         <h2>¡Bienvenido a FitnessApp!</h2>
         <p>Tu asistente personal para una vida más saludable.</p>
 
-        <ion-card>
+        <!-- Sección de estadísticas del día -->
+        <ion-card class="summary-card">
+          <ion-card-header>
+            <ion-card-title>Estadísticas de Hoy</ion-card-title>
+          </ion-card-header>
           <ion-card-content>
-            <p>Accede a tu perfil para ver y editar tus detalles personales.</p>
-            <p>¡No olvides revisar tus estadísticas de fitness diarias!</p>
+            <ion-grid>
+              <ion-row>
+                <ion-col size="4" class="stat">
+                  <ion-icon name="walk" size="large"></ion-icon>
+                  <p>Pasos</p>
+                  <h2>7,542</h2>
+                </ion-col>
+                <ion-col size="4" class="stat">
+                  <ion-icon name="flame" size="large"></ion-icon>
+                  <p>Calorías</p>
+                  <h2>1,234</h2>
+                </ion-col>
+                <ion-col size="4" class="stat">
+                  <ion-icon name="timer" size="large"></ion-icon>
+                  <p>Minutos Activos</p>
+                  <h2>45</h2>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
           </ion-card-content>
         </ion-card>
-      </div>
 
-      <div class="center-button-container">
-        <ion-button size="small" (click)="iralogin()">Ir a Login</ion-button>
+        <!-- Sección de progreso semanal -->
+        <ion-card class="progress-card">
+          <ion-card-header>
+            <ion-card-title>Progreso Semanal</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <canvas id="progressChart"></canvas> <!-- Placeholder para un gráfico -->
+          </ion-card-content>
+        </ion-card>
+
+        <!-- Botones de acción -->
+        <ion-row>
+          <ion-col size="6">
+            <ion-button expand="block" class="action-button" (click)="iniciarEntrenamiento()">Iniciar Entrenamiento</ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button expand="block" class="action-button" (click)="registrarComida()">Registrar Comida</ion-button>
+          </ion-col>
+        </ion-row>
+
+        <!-- Tarjeta de tips de salud -->
+        <ion-card class="tip-card">
+          <ion-card-content>
+            <p>Recuerda mantenerte hidratado. ¡Bebe al menos 2 litros de agua hoy!</p>
+          </ion-card-content>
+        </ion-card>
       </div>
     </ion-content>
   </div>

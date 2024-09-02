@@ -1,0 +1,39 @@
+/* src/app/profile/profile.page.scss */
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .profile-avatar {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 300px; /* Aumenta el tamaño del contenedor del avatar */
+    height: 300px; /* Aumenta el tamaño del contenedor del avatar */
+    border-radius: 50%;
+    overflow: hidden;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  ion-list {
+    width: 90%;
+    max-width: 500px;
+  }
+  
+  .center-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  ion-icon {
+    font-size: 120px; /* Aumenta el tamaño del icono */
+    color: #8c8c8c; /* Color del icono */
+  }
+  

@@ -9,14 +9,28 @@ import { Router } from '@angular/router';
 export class HomePage {
 
   constructor(private router: Router) {}
-  
 
+  // Método para navegar a la página de login
   iralogin() {
-    this.router.navigate(['/login']); // Navega a la página de perfil
+    this.router.navigate(['/login']);
   }
 
+  // Método para navegar a la página de perfil
   iraperfil() {
-    this.router.navigate(['/perfil']); // Navega a la página de perfil
+    this.router.navigate(['/perfil']);
   }
 
+  // Método para iniciar un entrenamiento
+  iniciarEntrenamiento() {
+    console.log('Iniciando entrenamiento...');
+    // Aquí podrías agregar lógica para iniciar un entrenamiento o navegar a una página de entrenamiento
+    // this.router.navigate(['/entrenamiento']);
+  }
+
+  // Método para registrar comida
+  registrarComida() {
+    console.log('Registrando comida...');
+    // Aquí podrías agregar lógica para registrar comida o navegar a una página de registro de comida
+    // this.router.navigate(['/registro-comida']);
+  }
 }
