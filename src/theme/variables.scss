@@ -1,2 +1,36 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+/* src/theme/variables.scss */
+:root {
+
+    --ion-background-color: #336bab; /* Ajusta este color al que desees usar */
+    --ion-background-color-rgb: 242, 242, 242;
+    /* Colores Primarios */
+    --ion-color-primary: #0057A4; /* Azul Oscuro */
+    --ion-color-primary-rgb: 0, 87, 164;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255, 255, 255;
+    --ion-color-primary-shade: #004780;
+    --ion-color-primary-tint: #336bab;
+  
+    /* Colores Secundarios */
+    --ion-color-secondary: #4A90E2; /* Azul Claro */
+    --ion-color-secondary-rgb: 74, 144, 226;
+    --ion-color-secondary-contrast: #ffffff;
+    --ion-color-secondary-contrast-rgb: 255, 255, 255;
+    --ion-color-secondary-shade: #3b72b6;
+    --ion-color-secondary-tint: #6ea8e8;
+  
+    /* Colores de Éxito y Advertencia */
+    --ion-color-success: #4CAF50; /* Verde Esmeralda */
+    --ion-color-warning: #FF9800; /* Naranja Brillante */
+    --ion-color-danger: #FF5252; /* Rojo */
+  
+    /* Colores de Fondo y Texto */
+    --ion-background-color: #4A90E2; /* Fondo Blanco */
+    --ion-text-color: #ffffff; /* Texto Gris Oscuro */
+    --ion-text-color-rgb: 51, 51, 51;
+  
+    /* Colores de Fondo de Tarjetas */
+    --ion-card-background: var(--ion-color-secondary); /* Fondo para tarjetas */
+    --ion-card-color: var(--ion-color-secondary-contrast); /* Color de texto para tarjetas */
+  }
+  

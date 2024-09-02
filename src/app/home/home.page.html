@@ -1,13 +1,12 @@
-
 <ion-app>
   <!-- Menú lateral -->
   <ion-menu side="start" content-id="main-content">
     <ion-header>
-      <ion-toolbar>
+      <ion-toolbar color="primary"> <!-- Usar color primario para la barra de herramientas -->
         <ion-title>Menú</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content class="ion-padding">
+    <ion-content class="ion-padding" color="light">
       <ion-list>
         <ion-item class="menu-item" (click)="iraperfil()">
           <ion-icon name="person-outline" slot="start"></ion-icon>
@@ -17,7 +16,6 @@
           <ion-icon name="log-in-outline" slot="start"></ion-icon>
           <ion-label>Login</ion-label>
         </ion-item>
-        <!-- Puedes agregar más opciones de menú aquí -->
       </ion-list>
     </ion-content>
   </ion-menu>
@@ -25,42 +23,43 @@
   <!-- Contenido principal -->
   <div class="ion-page" id="main-content">
     <ion-header [translucent]="true">
-      <ion-toolbar>
+      <ion-toolbar color="primary"> <!-- Usar color primario para la barra de herramientas -->
         <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button> <!-- Botón para abrir el menú -->
+          <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <ion-title>Inicio</ion-title>
       </ion-toolbar>
     </ion-header>
 
-    <ion-content [fullscreen]="true" class="ion-padding">
+    <ion-content [fullscreen]="true" class="ion-padding" color="light">
       <div class="home-container centered-content">
         <ion-img src="assets/img/logo.png" alt="Logo de FitnessApp" class="logo"></ion-img>
-        <h2>¡Bienvenido a FitnessApp!</h2>
-        <p>Tu asistente personal para una vida más saludable.</p>
+        <h2 style="color: var(--ion-color-primary);">¡Bienvenido a FitnessApp!</h2>
+        <p style="color: var(--ion-text-color);">Tu asistente personal para una vida más saludable.</p>
 
         <!-- Sección de estadísticas del día -->
-        <ion-card class="summary-card">
+        <ion-card class="summary-card"> <!-- Usar color primario para el fondo de la tarjeta -->
           <ion-card-header>
-            <ion-card-title>Estadísticas de Hoy</ion-card-title>
+            <ion-card-title color="primary-contrast">Estadísticas de Hoy</ion-card-title>
           </ion-card-header>
           <ion-card-content>
             <ion-grid>
               <ion-row>
                 <ion-col size="4" class="stat">
-                  <ion-icon name="walk" size="large"></ion-icon>
+                  <ion-icon name="walk-outline" size="large" color="--ion-text-color"></ion-icon>
                   <p>Pasos</p>
-                  <h2>7,542</h2>
+                  <h2 style="color: var(--ion-color-primary-contrast);">7,542</h2>
                 </ion-col>
+                
                 <ion-col size="4" class="stat">
-                  <ion-icon name="flame" size="large"></ion-icon>
+                  <ion-icon name="flame" size="large" color="warning"></ion-icon>
                   <p>Calorías</p>
-                  <h2>1,234</h2>
+                  <h2 style="color: var(--ion-color-warning);">1,234</h2>
                 </ion-col>
                 <ion-col size="4" class="stat">
-                  <ion-icon name="timer" size="large"></ion-icon>
+                  <ion-icon name="timer" size="large" color="success"></ion-icon>
                   <p>Minutos Activos</p>
-                  <h2>45</h2>
+                  <h2 style="color: var(--ion-color-success);">45</h2>
                 </ion-col>
               </ion-row>
             </ion-grid>
@@ -68,30 +67,29 @@
         </ion-card>
 
         <!-- Sección de progreso semanal -->
-        <ion-card class="progress-card">
+        <ion-card class="progress-card"> <!-- Usar color primario para el fondo de la tarjeta -->
           <ion-card-header>
-            <ion-card-title>Progreso Semanal</ion-card-title>
+            <ion-card-title color="primary-contrast">Progreso Semanal</ion-card-title>
           </ion-card-header>
           <ion-card-content>
             <img src="assets/img/prog_semanal.png" alt="Gráfico de Progreso Semanal" class="progress-image">
-          
           </ion-card-content>
         </ion-card>
 
         <!-- Botones de acción -->
         <ion-row>
           <ion-col size="6">
-            <ion-button expand="block" class="action-button" (click)="iniciarEntrenamiento()">Iniciar Entrenamiento</ion-button>
+            <ion-button expand="block" color="primary" (click)="iniciarEntrenamiento()">Iniciar Entrenamiento</ion-button>
           </ion-col>
           <ion-col size="6">
-            <ion-button expand="block" class="action-button" (click)="registrarComida()">Registrar Comida</ion-button>
+            <ion-button expand="block" color="secondary" (click)="registrarComida()">Registrar Comida</ion-button>
           </ion-col>
         </ion-row>
 
         <!-- Tarjeta de tips de salud -->
-        <ion-card class="tip-card">
+        <ion-card class="tip-card"> <!-- Usar color primario para el fondo de la tarjeta -->
           <ion-card-content>
-            <p>Recuerda mantenerte hidratado. ¡Bebe al menos 2 litros de agua hoy!</p>
+            <p style="color: var(--ion-color-primary-contrast);">Recuerda mantenerte hidratado. ¡Bebe al menos 2 litros de agua hoy!</p>
           </ion-card-content>
         </ion-card>
       </div>
