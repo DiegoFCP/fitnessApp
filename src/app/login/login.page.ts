@@ -52,7 +52,7 @@ export class LoginPage {
   }
 
   // Método para redirigir a la página de restablecimiento de contraseña
-  iraregistro() {
+  irarestablecer() {
     this.router.navigate(['/restablecer']);
   }
 }
