@@ -32,5 +32,10 @@
     /* Colores de Fondo de Tarjetas */
     --ion-card-background: var(--ion-color-secondary); /* Fondo para tarjetas */
     --ion-card-color: var(--ion-color-secondary-contrast); /* Color de texto para tarjetas */
+
+    /* Colores Personalizados para Mensajes */
+    --ion-color-custom-warning: #FFCC00 ; /* Amarillo (Advertencia) */
+    --ion-color-custom-danger: #ff245b;  /* Rojo Oscuro (Error) */
+    
   }
   
