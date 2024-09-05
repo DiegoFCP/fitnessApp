@@ -1,4 +1,3 @@
-// src/app/login/login.page.ts
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -44,10 +43,10 @@ export class LoginPage {
 
     // Si no hay errores, proceder con la redirección
     if (!this.errorUsername && !this.errorPassword) {
-      // Supongamos que la autenticación es exitosa
-      console.log('Usuario:', this.username);
-      console.log('Contraseña:', this.password);
-      this.router.navigate(['/home']);
+      // Navegar a Home y pasar el nombre de usuario usando Router state
+      this.router.navigate(['/home'], {
+        state: { username: this.username },
+      });
     }
   }
 

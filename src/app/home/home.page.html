@@ -25,7 +25,7 @@
     <ion-header [translucent]="true">
       <ion-toolbar color="primary"> <!-- Usar color primario para la barra de herramientas -->
         <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
+          <ion-menu-button></ion-menu-button> <!-- Botón para abrir el menú lateral -->
         </ion-buttons>
         <ion-title>Inicio</ion-title>
       </ion-toolbar>
@@ -34,11 +34,13 @@
     <ion-content [fullscreen]="true" class="ion-padding" color="light">
       <div class="home-container centered-content">
         <ion-img src="assets/img/logo.png" alt="Logo de FitnessApp" class="logo"></ion-img>
-        <h2 style="color: var(--ion-color-primary);">¡Bienvenido a FitnessApp --USUARIO!</h2>
+        
+        <!-- Interpolación para mostrar el nombre del usuario -->
+        <h2 style="color: var(--ion-color-primary);">¡Bienvenido a FitnessApp, {{ nombreUsuario }}!</h2>
         <p style="color: var(--ion-text-color);">Tu asistente personal para una vida más saludable.</p>
 
         <!-- Sección de estadísticas del día -->
-        <ion-card class="summary-card"> <!-- Usar color primario para el fondo de la tarjeta -->
+        <ion-card class="summary-card">
           <ion-card-header>
             <ion-card-title color="primary-contrast">Estadísticas de Hoy</ion-card-title>
           </ion-card-header>
@@ -46,18 +48,17 @@
             <ion-grid>
               <ion-row>
                 <ion-col size="4" class="stat">
-                  <ion-icon name="walk-outline" size="large" color="--ion-text-color"></ion-icon>
+                  <ion-icon name="walk-outline" size="large" ></ion-icon>
                   <p>Pasos</p>
                   <h2 style="color: var(--ion-color-primary-contrast);">7,542</h2>
                 </ion-col>
-                
                 <ion-col size="4" class="stat">
-                  <ion-icon name="flame" size="large" color="warning"></ion-icon>
+                  <ion-icon name="flame-outline" size="large" color="warning"></ion-icon>
                   <p>Calorías</p>
                   <h2 style="color: var(--ion-color-warning);">1,234</h2>
                 </ion-col>
                 <ion-col size="4" class="stat">
-                  <ion-icon name="timer" size="large" color="success"></ion-icon>
+                  <ion-icon name="timer-outline" size="large" color="success"></ion-icon>
                   <p>Minutos Activos</p>
                   <h2 style="color: var(--ion-color-success);">45</h2>
                 </ion-col>
@@ -67,7 +68,7 @@
         </ion-card>
 
         <!-- Sección de progreso semanal -->
-        <ion-card class="progress-card"> <!-- Usar color primario para el fondo de la tarjeta -->
+        <ion-card class="progress-card">
           <ion-card-header>
             <ion-card-title color="primary-contrast">Progreso Semanal</ion-card-title>
           </ion-card-header>
@@ -87,7 +88,7 @@
         </ion-row>
 
         <!-- Tarjeta de tips de salud -->
-        <ion-card class="tip-card"> <!-- Usar color primario para el fondo de la tarjeta -->
+        <ion-card class="tip-card">
           <ion-card-content>
             <p style="color: var(--ion-color-primary-contrast);">Recuerda mantenerte hidratado. ¡Bebe al menos 2 litros de agua hoy!</p>
           </ion-card-content>
