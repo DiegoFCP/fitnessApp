@@ -46,7 +46,9 @@ ion-item {
 }
 
 .logo {
-  width: 150px;
+  display: block; /* Asegura que sea tratado como un bloque */
+  margin: 0 auto 20px; /* Centrando el logo horizontalmente */
+  width: 300px;
   height: auto;
-  margin-bottom: 20px;
 }
+

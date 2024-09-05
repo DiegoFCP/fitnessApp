@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'perfil',
     loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'restablecer',
+    loadChildren: () => import('./restablecer/restablecer.module').then( m => m.RestablecerPageModule)
   }
 ];
 

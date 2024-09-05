@@ -1,0 +1,42 @@
+<!-- src/app/restablecer/restablecer.page.html -->
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary"> <!-- Usar color primario para la barra de herramientas -->
+    <ion-title>Restablecer Contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding" color="light"> <!-- Fondo claro consistente -->
+  <div class="home-container centered-content"> <!-- Usando clases para mantener consistencia -->
+    <ion-card> <!-- Añadiendo ion-card para crear un marco -->
+      <ion-card-content>
+        <ion-img src="assets/img/logo.png" alt="Logo de FitnessApp" class="logo"></ion-img>
+        
+        <h2 style="color: var(--ion-color-primary);">Restablece tu Contraseña</h2> <!-- Usar color primario para el encabezado -->
+        <p style="color: var(--ion-text-color);">Ingresa tu correo electrónico para restablecer la contraseña.</p>
+
+        <form> <!-- Aquí eventualmente iría (ngSubmit)="onSubmit()" para manejar el envío -->
+          <ion-list>
+            <ion-item>
+              <ion-label position="floating">Usuario</ion-label>
+              <br>
+              <ion-input type="text" placeholder="email@ejemplo.com" required></ion-input>
+              <br>
+              <ion-label position="floating">Contraseña</ion-label>
+              <br>
+              <ion-input type="password" placeholder="*******" maxlength="8" required></ion-input>
+            </ion-item>
+
+            <div class="center-button-container">
+              <ion-button expand="block" color="primary" type="submit">Enviar</ion-button> <!-- Usar color primario para el botón -->
+            </div>
+          </ion-list>
+        </form>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Opción para volver al login -->
+    <div class="center-button-container">
+      <ion-button size="small" color="secondary" (click)="iralogin()">Volver a Login</ion-button> <!-- Usar color secundario -->
+    </div>
+  </div>
+</ion-content>

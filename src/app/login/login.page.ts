@@ -24,6 +24,6 @@ export class LoginPage {
 
   iraregistro() {
     // Redirige a la página de registro
-    this.router.navigate(['/home']);
+    this.router.navigate(['/restablecer']);
   }
 }
