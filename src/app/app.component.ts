@@ -11,7 +11,6 @@ export class AppComponent {
   constructor(private router: Router) {}
 
   ionViewWillEnter() {
-    // Redirigir a la página de Login al cargar la app
     this.router.navigate(['/login']);
   }
 }

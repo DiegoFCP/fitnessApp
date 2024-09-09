@@ -12,24 +12,23 @@ export class PerfilPage implements OnInit {
   peso: number | null = null; 
   userProfileImage: string | null = null; 
 
-  // Adding progress value (starts at 50%)
-  progressValue: number = 50; // This line is important
+  
+  progressValue: number = 50; 
 
   constructor(private router: Router) {}
 
   ngOnInit() {
-    // Logic to load saved user profile
-    // this.loadUserProfileImage();
+ 
   }
 
   guardarPerfil() {
-    // Simulated saving logic
+
     console.log('Nombre:', this.nombre);
     console.log('Estatura:', this.estatura);
     console.log('Peso:', this.peso);
 
-    // Increase progress value to indicate progress (mock logic)
-    this.progressValue = 100; // Could calculate based on profile completeness
+    
+    this.progressValue = 100; 
     alert('Perfil guardado con éxito!');
   }
 

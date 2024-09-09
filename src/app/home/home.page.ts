@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AlertController, MenuController } from '@ionic/angular';  // Importamos MenuController
+import { Router, ActivatedRoute } from '@angular/router';
+import { AlertController, MenuController } from '@ionic/angular'; 
 
 @Component({
   selector: 'app-home',
@@ -8,36 +8,41 @@ import { AlertController, MenuController } from '@ionic/angular';  // Importamos
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  nombreUsuario: string = 'Usuario'; // Valor por defecto
+  nombreUsuario: string = 'Usuario';  // Valor por defecto
 
-  constructor(private router: Router, private alertController: AlertController, private menu: MenuController) {}  // Inyectamos MenuController
+  constructor(
+    private router: Router, 
+    private route: ActivatedRoute,  // Inyectamos ActivatedRoute para obtener queryParams
+    private alertController: AlertController, 
+    private menu: MenuController
+  ) {}
+
   ngOnInit() {
-    // Método ngOnInit requerido por la interfaz OnInit, pero vacío ya que no es necesario por ahora
     this.menu.close();
+
+    // Leer el nombre de usuario desde los queryParams
+    this.route.queryParams.subscribe(params => {
+      if (params['nombreUsuario']) {
+        this.nombreUsuario = params['nombreUsuario'];  // Asignamos el nombre de usuario recibido
+      }
+    });
   }
-  // Este método se ejecuta cuando la vista va a ser cargada
+
   ionViewWillEnter() {
-    // Cerramos el menú lateral para asegurar que no esté abierto al entrar a la página
     this.menu.close();
-
-    // Recuperar el nombre de usuario desde el estado de la navegación
-    const state = window.history.state;
-    if (state && state.username) {
-      this.nombreUsuario = state.username;  // Actualizamos el nombre del usuario
-    }
   }
 
-  // Método para navegar a la página de login
+  // Función para ir a la página de login
   iralogin() {
     this.router.navigate(['/login']);
   }
 
-  // Método para navegar a la página de perfil
+  // Función para ir a la página de perfil
   iraperfil() {
     this.router.navigate(['/perfil']);
   }
 
-  // Método para iniciar un entrenamiento
+  // Alerta para iniciar entrenamiento
   async iniciarEntrenamiento() {
     const alert = await this.alertController.create({
       header: 'Entrenamiento',
@@ -48,7 +53,7 @@ export class HomePage implements OnInit {
     await alert.present();
   }
 
-  // Método para registrar comida
+  // Alerta para registrar comida
   async registrarComida() {
     const alert = await this.alertController.create({
       header: 'Registrar Comida',

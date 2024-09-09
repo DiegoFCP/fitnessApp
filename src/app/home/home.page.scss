@@ -1,6 +1,4 @@
-/* src/app/home/home.page.scss */
 
-/* Estilos para el menú lateral */
 .menu-item {
   transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 
@@ -10,8 +8,8 @@
   }
 
   &.active {
-    --background: var(--ion-color-primary); /* Usar color primario */
-    --color: var(--ion-color-primary-contrast); /* Contraste para texto */
+    --background: var(--ion-color-primary); 
+    --color: var(--ion-color-primary-contrast); 
   }
 }
 
@@ -32,7 +30,7 @@
 #container p {
   font-size: 16px;
   line-height: 22px;
-  color: var(--ion-text-color); /* Usar color de texto global */
+  color: var(--ion-text-color); 
   margin: 0;
 }
 
@@ -52,29 +50,29 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: var(--ion-background-color); /* Aplicar color de fondo global */
-  color: var(--ion-text-color); /* Usar color de texto global */
+  background-color: var(--ion-background-color); 
+  color: var(--ion-text-color); 
 }
 
 h2 {
   font-size: 24px;
-  color: var(--ion-color-primary); /* Usar color primario para el encabezado */
+  color: var(--ion-color-primary);
 }
 
 p {
   font-size: 16px;
-  color: var(--ion-text-color); /* Usar color de texto global */
+  color: var(--ion-text-color); 
 }
 
 ion-content {
-  --background: var(--ion-background-color); /* Asegura el uso del color de fondo definido */
+  --background: var(--ion-background-color); 
 }
 
 ion-card {
   margin: 20px;
   padding: 10px;
-  background-color: var(--ion-color-primary); /* Usar color primario para el fondo de las tarjetas */
-  color: var(--ion-color-primary-contrast); /* Contraste de texto para asegurar legibilidad */
+  background-color: var(--ion-color-primary); 
+  color: var(--ion-color-primary-contrast); 
 }
 
 .summary-card, .progress-card, .tip-card {
@@ -90,8 +88,8 @@ ion-card {
 
 .action-button {
   margin-top: 10px;
-  background-color: var(--ion-color-primary); /* Usar color primario */
-  color: var(--ion-color-primary-contrast); /* Contraste para texto */
+  background-color: var(--ion-color-primary); 
+  color: var(--ion-color-primary-contrast); 
   font-weight: bold;
 }
 
@@ -104,7 +102,7 @@ ion-card {
 .progress-image {
   width: 100%;
   height: auto;
-  max-width: 600px; /* Limitar el ancho máximo para dispositivos grandes */
+  max-width: 600px; 
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -112,7 +110,7 @@ ion-card {
 
 
 ion-button {
-  width: 100%; /* Asegura que los botones ocupen todo el ancho disponible */
+  width: 100%; 
   height: 100%;
 }
 

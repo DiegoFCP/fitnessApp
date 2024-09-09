@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';  // Importamos NavigationExtras
 
 @Component({
   selector: 'app-login',
@@ -10,47 +10,40 @@ export class LoginPage {
   username: string = '';
   password: string = '';
 
-  // Variables para gestionar los errores
   errorUsername: string = '';
   errorPassword: string = '';
 
   constructor(private router: Router) {}
 
-  // Método de login con validaciones
   onLogin() {
-    // Reiniciar mensajes de error antes de validar
     this.errorUsername = '';
     this.errorPassword = '';
-
-    // Validación de campos vacíos
+  
+    // Validaciones
     if (!this.username) {
       this.errorUsername = 'El campo Usuario es obligatorio';
     }
-
+  
     if (!this.password) {
       this.errorPassword = 'El campo Contraseña es obligatorio';
     }
-
-    // Validación de longitud mínima y máxima del nombre de usuario
+  
     if (this.username && (this.username.length < 4 || this.username.length > 12)) {
       this.errorUsername = 'El nombre de usuario debe tener entre 4 y 12 caracteres';
     }
-
-    // Validación de longitud mínima y máxima de la contraseña
+  
     if (this.password && (this.password.length < 6 || this.password.length > 12)) {
       this.errorPassword = 'La contraseña debe tener entre 6 y 12 caracteres';
     }
-
-    // Si no hay errores, proceder con la redirección
+  
     if (!this.errorUsername && !this.errorPassword) {
-      // Navegar a Home y pasar el nombre de usuario usando Router state
+      // Navegar a la página home con queryParams
       this.router.navigate(['/home'], {
-        state: { username: this.username },
+        queryParams: { nombreUsuario: this.username }
       });
     }
   }
 
-  // Método para redirigir a la página de restablecimiento de contraseña
   irarestablecer() {
     this.router.navigate(['/restablecer']);
   }
