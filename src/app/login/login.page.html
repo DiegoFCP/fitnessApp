@@ -1,6 +1,5 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
-    <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,10 +9,10 @@
   <div class="home-container centered-content">
     <ion-card>
       <ion-card-content>
+        <h3 style="color: var(--ion-text-color);">MyFit</h3>
         <ion-img src="assets/img/logo.png" alt="Logo de FitnessApp" class="logo"></ion-img>
         
         <h2 style="color: var(--ion-color-primary);">¡Inicia Sesión en FitnessApp!</h2>
-        <p style="color: var(--ion-text-color);">Por favor ingresa tus credenciales.</p>
 
         <form (ngSubmit)="onLogin()">
           <ion-list>
@@ -41,9 +40,6 @@
             <!-- Botón para iniciar sesión -->
             <div class="center-button-container">
               <ion-button expand="block" color="primary" type="submit">INGRESAR</ion-button>
-            </div>
-
-            <div class="center-button-container">
               <ion-button size="small" color="secondary" (click)="irarestablecer()">Restablecer <br> Contraseña</ion-button>
             </div>
 

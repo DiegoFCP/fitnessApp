@@ -3,7 +3,7 @@
   <ion-menu side="start" content-id="main-content">
     <ion-header>
       <ion-toolbar color="primary"> <!-- Usar color primario para la barra de herramientas -->
-        <ion-title>Menú</ion-title>
+        
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding" color="light">
@@ -23,20 +23,24 @@
   <!-- Contenido principal -->
   <div class="ion-page" id="main-content">
     <ion-header [translucent]="true">
+      
       <ion-toolbar color="primary"> <!-- Usar color primario para la barra de herramientas -->
         <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button> <!-- Botón para abrir el menú lateral -->
         </ion-buttons>
-        <ion-title>Inicio</ion-title>
+        
       </ion-toolbar>
     </ion-header>
 
     <ion-content [fullscreen]="true" class="ion-padding" color="light">
       <div class="home-container centered-content">
+        <br>
+        <h3 style="color: var(--ion-text-color);">MyFit</h3>
         <ion-img src="assets/img/logo.png" alt="Logo de FitnessApp" class="logo"></ion-img>
         
         <!-- Interpolación para mostrar el nombre del usuario -->
-        <h2 style="color: var(--ion-color-primary);">¡Bienvenido a FitnessApp, {{ nombreUsuario }}!</h2>
+        <h2 style="color: var(--ion-color-primary);">¡Bienvenido {{ nombreUsuario }}!</h2>
+        
         <p style="color: var(--ion-text-color);">Tu asistente personal para una vida más saludable.</p>
 
         <!-- Sección de estadísticas del día -->
@@ -62,6 +66,7 @@
                   <p>Minutos Activos</p>
                   <h2 style="color: var(--ion-color-success);">45</h2>
                 </ion-col>
+                <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
               </ion-row>
             </ion-grid>
           </ion-card-content>

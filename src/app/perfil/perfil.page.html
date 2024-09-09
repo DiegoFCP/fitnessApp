@@ -1,19 +1,18 @@
-<!-- src/app/perfil/perfil.page.html -->
 <ion-header [translucent]="true">
-  <ion-toolbar color="primary"> <!-- Usar color primario para la barra de herramientas -->
+  <ion-toolbar color="primary">
     <ion-title>Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding" color="light"> <!-- Fondo claro consistente -->
-  <div class="home-container centered-content"> <!-- Usando clases para mantener consistencia -->
-    <ion-card> <!-- Añadiendo ion-card para crear un marco -->
+<ion-content [fullscreen]="true" class="ion-padding" color="light">
+  <div class="home-container centered-content">
+    <ion-card>
       <ion-card-content>
         <ion-avatar class="profile-avatar">
-          <ion-icon name="person-circle-outline" size="large"></ion-icon> <!-- Icono de perfil por defecto -->
+          <ion-icon name="person-circle-outline" size="large"></ion-icon>
         </ion-avatar>
         
-        <h2 style="color: var(--ion-color-primary);">Mi Perfil</h2> <!-- Usar color primario para el encabezado -->
+        <h2 style="color: var(--ion-color-primary);">Mi Perfil</h2>
         
         <ion-list>
           <ion-item>
@@ -31,6 +30,9 @@
             <ion-input type="number" [(ngModel)]="peso" name="peso"></ion-input>
           </ion-item>
 
+          <!-- Adding a Progress Bar -->
+          <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
+
           <div class="center-button-container">
             <ion-button expand="block" color="primary" (click)="guardarPerfil()">Guardar</ion-button>
           </div>
@@ -38,7 +40,6 @@
       </ion-card-content>
     </ion-card>
 
-    <!-- Botón para ir a la página de inicio -->
     <div class="center-button-container">
       <ion-button size="small" color="secondary" (click)="iralHome()">Ir a Home</ion-button>
     </div>
