@@ -4,18 +4,18 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 100vh; /* Asegura que el contenedor ocupe toda la pantalla */
+  height: 100vh; 
   background-color: var(--ion-background-color);
   color: var(--ion-text-color);
-  padding: 0 20px; /* Ajuste de padding lateral */
+  padding: 0 20px;
 }
 
 ion-title.app-title {
   text-align: center;
   font-size: 24px;
   font-weight: normal;
-  color: var(--ion-color-primary-contrast); /* Color de texto */
-  width: 100%; /* Asegura que ocupe todo el ancho */
+  color: var(--ion-color-primary-contrast); 
+  width: 100%; 
 }
 
 ion-card {
@@ -40,12 +40,22 @@ ion-item {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center; 
   margin-top: 10px;
 }
 
+.center-button-container ion-button {
+  width: 100%; 
+  max-width: 300px; 
+  margin: 10px 10;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  height: 30px;
+}
+
 .logo {
-  width: 300px; /* Ajuste de tamaño del logo */
+  width: 300px; 
   height: auto;
-  margin: 0 auto 20px; /* Centra el logo y añade espacio inferior */
-  display: block; /* Asegura que el logo sea tratado como un bloque y se centre */
+  margin: 0 auto 20px; 
+  display: block; 
 }
