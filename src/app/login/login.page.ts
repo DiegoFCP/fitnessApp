@@ -31,29 +31,33 @@ export class LoginPage {
     this.errorUsername = '';
     this.errorPassword = '';
 
-    // Validaciones de campos
-    if (!this.username) {
-      this.errorUsername = 'El campo Usuario es obligatorio';
+    // Trim leading/trailing spaces and validate
+    const trimmedUsername = this.username.trim();
+    const trimmedPassword = this.password.trim();
+
+    // Validaciones de campos vacíos o solo espacios
+    if (!trimmedUsername) {
+      this.errorUsername = 'El campo Usuario es obligatorio y no puede contener solo espacios.';
     }
 
-    if (!this.password) {
-      this.errorPassword = 'El campo Contraseña es obligatorio';
+    if (!trimmedPassword) {
+      this.errorPassword = 'El campo Contraseña es obligatorio y no puede contener solo espacios.';
     }
 
     // Validación de longitud del nombre de usuario
-    if (this.username && (this.username.length < 4 || this.username.length > 12)) {
+    if (trimmedUsername && (trimmedUsername.length < 4 || trimmedUsername.length > 12)) {
       this.errorUsername = 'El nombre de usuario debe tener entre 4 y 12 caracteres';
     }
 
     // Validación de longitud de la contraseña
-    if (this.password && (this.password.length < 6 || this.password.length > 12)) {
+    if (trimmedPassword && (trimmedPassword.length < 6 || trimmedPassword.length > 12)) {
       this.errorPassword = 'La contraseña debe tener entre 6 y 12 caracteres';
     }
 
     // Si no hay errores, redirigir a Home y pasar el nombre de usuario
     if (!this.errorUsername && !this.errorPassword) {
       this.router.navigate(['/home'], {
-        queryParams: { nombreUsuario: this.username }  // Pasar el nombre del usuario
+        queryParams: { nombreUsuario: trimmedUsername }  // Pasar el nombre del usuario sin espacios
       });
     }
   }

@@ -13,15 +13,18 @@
         <h2 style="color: var(--ion-color-primary-contrast);">Restablece tu Contraseña</h2>
         <p style="color: var(--ion-text-color);">Ingresa tu usuario para restablecer la contraseña.</p>
 
-        <form>
+        <form (ngSubmit)="onRecuperar()">
           <ion-list>
             <ion-item>
               <ion-label position="fixed">Usuario</ion-label>
-              <ion-input type="text" minlength="3" maxlength="20" required></ion-input>
+              <ion-input type="text" [(ngModel)]="username" name="username" minlength="3" maxlength="20" required></ion-input>
             </ion-item>
 
+            <!-- Error message display -->
+            <ion-text color="danger" *ngIf="errorMessage">{{ errorMessage }}</ion-text>
+
             <div class="center-button-container">
-              <ion-button expand="block" color="primary" (click)="iralogin()">Recuperar</ion-button>
+              <ion-button expand="block" color="primary" type="submit">Recuperar</ion-button>
             </div>
           </ion-list>
         </form>
