@@ -5,7 +5,7 @@
         <ion-title class="app-title">MyFit</ion-title> 
       </ion-toolbar>
     </ion-header>
-    <ion-content class="ion-padding" color="light">
+    <ion-content class="ion-padding" color="--ion-color-primary">
       <ion-list>
         <ion-item class="menu-item" (click)="iraperfil()">
           <ion-icon name="person-outline" slot="start"></ion-icon>
@@ -19,8 +19,9 @@
     </ion-content>
   </ion-menu>
 
-  <div class="ion-page" id="main-content">
-    <ion-header [translucent]="true">
+ 
+  <ion-grid class="ion-page" id="main-content">
+    <ion-header >
       <ion-toolbar color="primary">
         <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
@@ -30,70 +31,93 @@
     </ion-header>
 
     <ion-content [fullscreen]="true" class="ion-padding" color="light">
-      <div class="home-container centered-content">
-        <br>
-        <ion-img src="assets/img/logo.png" alt="Logo de FitnessApp" class="logo"></ion-img>
+      
+      <ion-grid class="home-container centered-content">
+        <ion-row>
+          <ion-col>
+            <br>
+            <ion-img src="assets/img/logo.png" alt="Logo de FitnessApp" class="logo"></ion-img>
+          </ion-col>
+        </ion-row>
 
-        <!-- Mostrar nombre de usuario con interpolación -->
-        <h2 style="color: var(--ion-color-primary);">¡Bienvenido {{ nombreUsuario }}!</h2>
+        <ion-row>
+          <ion-col>
+            <!--INTERPOLACION -->
+            <h2 style="color: var( --ion-color-primary-contrast);">¡Bienvenido {{ nombreUsuario }}!</h2>
+            <p style="color: var(--ion-text-color);">Tu asistente personal para una vida más saludable.</p>
+          </ion-col>
+        </ion-row>
 
-        <p style="color: var(--ion-text-color);">Tu asistente personal para una vida más saludable.</p>
+        <!-- ESTADISTICAS DEL DIA -->
+        <ion-row>
+          <ion-col>
+            <ion-card class="summary-card">
+              <ion-card-header>
+                <ion-card-title color="primary-contrast">Estadísticas de Hoy</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size="4" class="stat">
+                      <ion-icon name="walk-outline" size="large"></ion-icon>
+                      <p>Pasos</p>
+                      <h2 style="color: var(--ion-color-primary-contrast);">7,542</h2>
+                    </ion-col>
+                    <ion-col size="4" class="stat">
+                      <ion-icon name="flame-outline" size="large" color="warning"></ion-icon>
+                      <p>Calorías</p>
+                      <h2 style="color: var(--ion-color-warning);">1,234</h2>
+                    </ion-col>
+                    <ion-col size="4" class="stat">
+                      <ion-icon name="timer-outline" size="large" color="success"></ion-icon>
+                      <p>Minutos</p>
+                      <h2 style="color: var(--ion-color-success);">45</h2>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
 
-        <!-- Estadísticas del día -->
-        <ion-card class="summary-card">
-          <ion-card-header>
-            <ion-card-title color="primary-contrast">Estadísticas de Hoy</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <ion-grid>
-              <ion-row>
-                <ion-col size="4" class="stat">
-                  <ion-icon name="walk-outline" size="large"></ion-icon>
-                  <p>Pasos</p>
-                  <h2 style="color: var(--ion-color-primary-contrast);">7,542</h2>
-                </ion-col>
-                <ion-col size="4" class="stat">
-                  <ion-icon name="flame-outline" size="large" color="warning"></ion-icon>
-                  <p>Calorías</p>
-                  <h2 style="color: var(--ion-color-warning);">1,234</h2>
-                </ion-col>
-                <ion-col size="4" class="stat">
-                  <ion-icon name="timer-outline" size="large" color="success"></ion-icon>
-                  <p>Minutos Activos</p>
-                  <h2 style="color: var(--ion-color-success);">45</h2>
-                </ion-col>
+                
                 <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
-              </ion-row>
-            </ion-grid>
-          </ion-card-content>
-        </ion-card>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
 
-        <!-- Progreso semanal -->
-        <ion-card class="progress-card">
-          <ion-card-header>
-            <ion-card-title color="primary-contrast">Progreso Semanal</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <img src="assets/img/prog_semanal.png" alt="Gráfico de Progreso Semanal" class="progress-image">
-          </ion-card-content>
-        </ion-card>
+        <!-- PROGRESO SEMANAL -->
+        <ion-row>
+          <ion-col>
+            <ion-card class="progress-card">
+              <ion-card-header>
+                <ion-card-title color="primary-contrast">Progreso Semanal</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <img src="assets/img/prog_semanal.png" alt="Gráfico de Progreso Semanal" class="progress-image">
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
 
+        <!-- BOTONES FUTURAS FUNCIONALIDADES-->
         <ion-row>
           <ion-col size="6">
             <ion-button expand="block" color="primary" (click)="iniciarEntrenamiento()">Iniciar Entrenamiento</ion-button>
           </ion-col>
           <ion-col size="6">
-            <ion-button expand="block" color="primary" (click)="registrarComida()">Registrar Comida</ion-button>
+            <ion-button expand="block" color="primary" (click)="registrarComida()">Registrar <br> Comida</ion-button>
           </ion-col>
         </ion-row>
 
-        <!-- TIPS DE SALUD / BUSCAR API-->
-        <ion-card class="tip-card">
-          <ion-card-content>
-            <p style="color: var(--ion-color-primary-contrast);">Recuerda mantenerte hidratado. ¡Bebe al menos 2 litros de agua hoy!</p>
-          </ion-card-content>
-        </ion-card>
-      </div>
+        <!-- TIPS DE SALUD FUTURA API -->
+        <ion-row>
+          <ion-col>
+            <ion-card class="tip-card">
+              <ion-card-content>
+                <p style="color: var(--ion-color-primary-contrast);">Recuerda mantenerte hidratado.<br> ¡Bebe al menos 2 litros de agua hoy!</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid> 
     </ion-content>
-  </div>
+  </ion-grid> 
 </ion-app>

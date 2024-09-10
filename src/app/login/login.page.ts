@@ -31,11 +31,11 @@ export class LoginPage {
     this.errorUsername = '';
     this.errorPassword = '';
 
-    // Trim leading/trailing spaces and validate
+    // Validaciones de campos vacíos o solo espacios
+    
     const trimmedUsername = this.username.trim();
     const trimmedPassword = this.password.trim();
 
-    // Validaciones de campos vacíos o solo espacios
     if (!trimmedUsername) {
       this.errorUsername = 'El campo Usuario es obligatorio y no puede contener solo espacios.';
     }
@@ -54,15 +54,14 @@ export class LoginPage {
       this.errorPassword = 'La contraseña debe tener entre 6 y 12 caracteres';
     }
 
-    // Si no hay errores, redirigir a Home y pasar el nombre de usuario
+    
     if (!this.errorUsername && !this.errorPassword) {
       this.router.navigate(['/home'], {
-        queryParams: { nombreUsuario: trimmedUsername }  // Pasar el nombre del usuario sin espacios
+        queryParams: { nombreUsuario: trimmedUsername }  
       });
     }
   }
 
-  // Método para redirigir a la página de restablecimiento de contraseña
   irarestablecer() {
     this.router.navigate(['/restablecer']);
   }
