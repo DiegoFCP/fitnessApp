@@ -1,32 +1,35 @@
-/* src/app/login/login.page.scss */
-
 .home-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: var(--ion-background-color); /* Fondo consistente con la página de inicio */
-  color: var(--ion-text-color); /* Color de texto global */
-  padding: 20px;
+  height: 100vh; /* Asegura que el contenedor ocupe toda la pantalla */
+  background-color: var(--ion-background-color);
+  color: var(--ion-text-color);
+  padding: 0 20px; /* Ajuste de padding lateral */
+}
+
+ion-title.app-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: normal;
+  color: var(--ion-color-primary-contrast); /* Color de texto */
+  width: 100%; /* Asegura que ocupe todo el ancho */
 }
 
 ion-card {
   width: 100%;
-  max-width: 400px; /* Limitar el ancho máximo del card para crear un marco compacto */
-  margin: 20px auto; /* Centrando el card */
+  max-width: 400px;
+  margin: 20px auto;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añadir sombra para resaltar el marco */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
   font-size: 24px;
-  color: var(--ion-color-primary); /* Color primario para el encabezado */
+  color: var(--ion-color-primary);
   margin-bottom: 20px;
-}
-
-p {
-  color: var(--ion-text-color); /* Usar color de texto global */
 }
 
 ion-item {
@@ -35,20 +38,14 @@ ion-item {
 
 .center-button-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-top: 10px;
 }
 
-.action-button {
-  margin-top: 20px;
-  background-color: var(--ion-color-primary); /* Usar color primario */
-  color: var(--ion-color-primary-contrast); /* Contraste para texto */
-}
-
 .logo {
-  display: block; /* Asegura que sea tratado como un bloque */
-  margin: 0 auto 20px; /* Centrando el logo horizontalmente */
-  width: 300px;
+  width: 300px; /* Ajuste de tamaño del logo */
   height: auto;
+  margin: 0 auto 20px; /* Centra el logo y añade espacio inferior */
+  display: block; /* Asegura que el logo sea tratado como un bloque y se centre */
 }
-

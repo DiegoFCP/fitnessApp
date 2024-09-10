@@ -1,43 +1,64 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AlertController, MenuController } from '@ionic/angular'; 
 
 @Component({
   selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
+  nombreUsuario: string = 'Usuario';  
 
-  constructor(private router: Router, private alertController: AlertController) {}
+  constructor(
+    private router: Router, 
+    private route: ActivatedRoute,  
+    private alertController: AlertController, 
+    private menu: MenuController
+  ) {}
 
-  // Método para navegar a la página de login
+  ngOnInit() {
+    this.menu.close();
+
+    // INTERPOLACION??
+    this.route.queryParams.subscribe(params => {
+      if (params['nombreUsuario']) {
+        this.nombreUsuario = params['nombreUsuario'];  // ASIGNA NONMBRE RECIBIDO
+      }
+    });
+  }
+
+  ionViewWillEnter() {
+    this.menu.close();
+  }
+
+  // Función para ir a la página de login
   iralogin() {
     this.router.navigate(['/login']);
   }
 
-  // Método para navegar a la página de perfil
+  // Función para ir a la página de perfil
   iraperfil() {
     this.router.navigate(['/perfil']);
   }
 
-  // Método para iniciar un entrenamiento
+  // Alerta para iniciar entrenamiento
   async iniciarEntrenamiento() {
     const alert = await this.alertController.create({
       header: 'Entrenamiento',
       message: 'Iniciando entrenamiento...',
-      buttons: ['OK']
+      buttons: ['OK'],
     });
 
     await alert.present();
   }
 
-  // Método para registrar comida
+  // Alerta para registrar comida
   async registrarComida() {
     const alert = await this.alertController.create({
       header: 'Registrar Comida',
       message: 'Registrando comida...',
-      buttons: ['OK']
+      buttons: ['OK'],
     });
 
     await alert.present();

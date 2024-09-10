@@ -1,6 +1,5 @@
-// src/app/login/login.page.ts
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,19 +10,28 @@ export class LoginPage {
   username: string = '';
   password: string = '';
 
-  // Variables para gestionar los errores
+  // Variables de error para los campos
   errorUsername: string = '';
   errorPassword: string = '';
 
+  // Variables para mostrar/ocultar la contraseña
+  passwordType: string = 'password';
+  passwordIcon: string = 'eye-off';  // Icono inicial para ocultar contraseña
+
   constructor(private router: Router) {}
+
+  // Método para alternar la visibilidad de la contraseña
+  togglePasswordVisibility() {
+    this.passwordType = this.passwordType === 'password' ? 'text' : 'password';
+    this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
+  }
 
   // Método de login con validaciones
   onLogin() {
-    // Reiniciar mensajes de error antes de validar
     this.errorUsername = '';
     this.errorPassword = '';
 
-    // Validación de campos vacíos
+    // Validaciones de campos
     if (!this.username) {
       this.errorUsername = 'El campo Usuario es obligatorio';
     }
@@ -32,22 +40,21 @@ export class LoginPage {
       this.errorPassword = 'El campo Contraseña es obligatorio';
     }
 
-    // Validación de longitud mínima y máxima del nombre de usuario
+    // Validación de longitud del nombre de usuario
     if (this.username && (this.username.length < 4 || this.username.length > 12)) {
       this.errorUsername = 'El nombre de usuario debe tener entre 4 y 12 caracteres';
     }
 
-    // Validación de longitud mínima y máxima de la contraseña
+    // Validación de longitud de la contraseña
     if (this.password && (this.password.length < 6 || this.password.length > 12)) {
       this.errorPassword = 'La contraseña debe tener entre 6 y 12 caracteres';
     }
 
-    // Si no hay errores, proceder con la redirección
+    // Si no hay errores, redirigir a Home y pasar el nombre de usuario
     if (!this.errorUsername && !this.errorPassword) {
-      // Supongamos que la autenticación es exitosa
-      console.log('Usuario:', this.username);
-      console.log('Contraseña:', this.password);
-      this.router.navigate(['/home']);
+      this.router.navigate(['/home'], {
+        queryParams: { nombreUsuario: this.username }  // Pasar el nombre del usuario
+      });
     }
   }
 
