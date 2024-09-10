@@ -1,4 +1,3 @@
-
 .menu-item {
   transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 
@@ -22,22 +21,6 @@
   transform: translateY(-50%);
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  color: var(--ion-text-color); 
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
-
 .center-button-container {
   display: flex;
   justify-content: center;
@@ -50,9 +33,20 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  min-height: 100vh; /* Ensure the container fills the full height */
   background-color: var(--ion-background-color); 
   color: var(--ion-text-color); 
 }
+
+ion-title.app-title {
+  text-align: center;
+  transform: translateX(-5%);
+  font-size: 24px;
+  font-weight: normal;
+  color: var(--ion-color-primary-contrast); 
+}
+
+
 
 h2 {
   font-size: 24px;
@@ -94,7 +88,8 @@ ion-card {
 }
 
 .logo {
-  width: 300px;
+  width: 100%; 
+  max-width: 250px;
   height: auto;
   margin-bottom: 20px;
 }
@@ -107,10 +102,8 @@ ion-card {
   margin-bottom: 10px;
 }
 
-
-
 ion-button {
   width: 100%; 
-  height: 100%;
+  height: auto; 
 }
 

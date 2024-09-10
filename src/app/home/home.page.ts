@@ -8,11 +8,11 @@ import { AlertController, MenuController } from '@ionic/angular';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  nombreUsuario: string = 'Usuario';  // Valor por defecto
+  nombreUsuario: string = 'Usuario';  
 
   constructor(
     private router: Router, 
-    private route: ActivatedRoute,  // Inyectamos ActivatedRoute para obtener queryParams
+    private route: ActivatedRoute,  
     private alertController: AlertController, 
     private menu: MenuController
   ) {}
@@ -20,10 +20,10 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.menu.close();
 
-    // Leer el nombre de usuario desde los queryParams
+    // INTERPOLACION??
     this.route.queryParams.subscribe(params => {
       if (params['nombreUsuario']) {
-        this.nombreUsuario = params['nombreUsuario'];  // Asignamos el nombre de usuario recibido
+        this.nombreUsuario = params['nombreUsuario'];  // ASIGNA NONMBRE RECIBIDO
       }
     });
   }

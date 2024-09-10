@@ -1,48 +1,39 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
+    <ion-title class="app-title">MyFit</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<!--REVISAR CENTRAR Y SUBIR PAGINA AL RECARGAR DESDE LOGIN-->
 
 <ion-content [fullscreen]="true" class="ion-padding" color="light">
   <div class="home-container centered-content">
     <ion-card>
       <ion-card-content>
-        <h3 style="color: var(--ion-text-color);">MyFit</h3>
         <ion-img src="assets/img/logo.png" alt="Logo de FitnessApp" class="logo"></ion-img>
-        
-        <h2 style="color: var(--ion-color-primary);">¡Inicia Sesión en FitnessApp!</h2>
+
+        <h2 style="color: var(--ion-color-secondary-contrast);">¡Inicia Sesión en FitnessApp!</h2>
 
         <form (ngSubmit)="onLogin()">
           <ion-list>
-
-            <!-- Campo para ingresar el nombre de usuario -->
             <ion-item>
-              <ion-label position="floating">Usuario</ion-label>
-              <br>
+              <ion-label position="fixed">Usuario</ion-label>
               <ion-input type="text" [(ngModel)]="username" name="username" minlength="4" maxlength="12" required></ion-input>
             </ion-item>
-            <!-- Mensaje de error si el nombre de usuario es incorrecto -->
-            <ion-text style="color: var(--ion-color-custom-danger);" font-weight="bold" *ngIf="errorUsername">{{ errorUsername }}</ion-text>
 
-            <!-- Campo para ingresar la contraseña -->
+            <ion-text color="danger" font-weight="bold" *ngIf="errorUsername">{{ errorUsername }}</ion-text>
+
             <ion-item>
-              <ion-label position="floating">Contraseña</ion-label>
-              <br>
-              <ion-input type="password" [(ngModel)]="password" name="password" minlength="6" maxlength="12" required></ion-input>
+              <ion-label position="fixed">Contraseña</ion-label>
+              <ion-input [type]="passwordType" [(ngModel)]="password" name="password" minlength="6" maxlength="12" required></ion-input>
+              <!-- Icono para mostrar/ocultar contraseña -->
+              <ion-icon [name]="passwordIcon"  slot="end" (click)="togglePasswordVisibility()"  color="primary"></ion-icon>
             </ion-item>
-            <!-- Mensaje de error si la contraseña es incorrecta -->
+
             <ion-text color="danger" font-weight="bold" *ngIf="errorPassword">{{ errorPassword }}</ion-text>
 
-            <br>
-
-            <!-- Botones de ingresar y restablecer contraseña -->
             <div class="center-button-container">
               <ion-button expand="block" color="primary" type="submit">INGRESAR</ion-button>
-              <ion-button size="small" color="secondary" (click)="irarestablecer()">Restablecer <br> Contraseña</ion-button>
+              <ion-button size="small" color="secondary" (click)="irarestablecer()">Restablecer Contraseña</ion-button>
             </div>
-
           </ion-list>
         </form>
       </ion-card-content>

@@ -1,53 +1,54 @@
 .home-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: var(--ion-background-color);
-    color: var(--ion-text-color);
-    padding: 20px;
-    min-height: 100vh; 
-  }
-  
-  ion-card {
-    width: 100%;
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  }
-  
-  h2 {
-    font-size: 24px;
-    color: var(--ion-color-primary);
-    margin-bottom: 20px;
-  }
-  
-  p {
-    color: var(--ion-text-color); 
-  }
-  
-  ion-item {
-    margin-bottom: 15px;
-  }
-  
-  .center-button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-  }
-  
-  .action-button {
-    margin-top: 20px;
-    background-color: var(--ion-color-primary); 
-    color: var(--ion-color-primary-contrast); 
-  }
-  
-  .logo {
-    display: block;
-    margin: 0 auto 20px; 
-    width: 300px;
-    height: auto;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente */
+  align-items: center; /* Centra horizontalmente */
+  text-align: center;
+  background-color: var(--ion-background-color);
+  color: var(--ion-text-color);
+  padding: 20px;
+  min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+}
+
+ion-title.app-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: normal;
+  color: var(--ion-color-primary-contrast); /* Color de texto */
+  width: 100%;
+}
+
+ion-card {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 24px;
+  color: var(--ion-color-primary);
+  margin-bottom: 20px;
+}
+
+p {
+  color: var(--ion-text-color);
+}
+
+ion-item {
+  margin-bottom: 15px;
+}
+
+.center-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.logo {
+  display: block;
+  margin: 0 auto 20px;
+  width: 250px;
+  height: auto;
+}
