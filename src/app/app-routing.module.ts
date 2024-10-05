@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component'; // Asegúrate de tener este componente
+
 
 const routes: Routes = [
   {
@@ -22,7 +24,9 @@ const routes: Routes = [
   {
     path: 'restablecer',
     loadChildren: () => import('./restablecer/restablecer.module').then( m => m.RestablecerPageModule)
-  }
+  },
+  { path: '**', 
+    component: PageNotFoundComponent }
 ];
 
 @NgModule({
