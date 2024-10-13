@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
+import { Device } from '@capacitor/device';
+import { SqliteService } from './services/sqlite.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +11,34 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  constructor(private router: Router) {}
+
+  public isWeb: boolean;
+  public load: boolean;
+
+  constructor(
+    private router: Router,
+    private platform: Platform,
+    private sqlite: SqliteService) {
+    this.isWeb = !false;
+    this.load = !false;
+    this.initApp();
+  }
+
+  initApp(){
+    
+    this.platform.ready().then( async () => {
+    
+      const info = await Device.getInfo();
+      this.isWeb = info.platform == 'web';
+
+      this.sqlite.init();
+      this.sqlite.dbReady.subscribe(load => {
+        this.load = load;
+      })
+
+
+    })
+  }
 
   ionViewWillEnter() {
     this.router.navigate(['/login']);
