@@ -65,4 +65,9 @@ export class LoginPage {
   irarestablecer() {
     this.router.navigate(['/restablecer']);
   }
+
+  iraregistro() {
+    this.router.navigate(['/registro']);
+  }
 }
+
