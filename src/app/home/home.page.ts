@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertController, MenuController } from '@ionic/angular'; 
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-home',
@@ -14,35 +17,37 @@ export class HomePage implements OnInit {
     private router: Router, 
     private route: ActivatedRoute,  
     private alertController: AlertController, 
-    private menu: MenuController
+    private menu: MenuController,
+    private afAuth: AngularFireAuth,
+    private firestore: AngularFirestore
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.menu.close();
 
-    // INTERPOLACION??
-    this.route.queryParams.subscribe(params => {
-      if (params['nombreUsuario']) {
-        this.nombreUsuario = params['nombreUsuario'];  // ASIGNA NONMBRE RECIBIDO
-      }
-    });
+    // Recupera el nombre de usuario desde Firestore
+    const user = await this.afAuth.currentUser;
+    console.log("Usuario autenticado:", user); // Verificar usuario autenticado
+    if (user) {
+      this.firestore.collection('users').doc(user.uid).valueChanges().subscribe((data: any) => {
+        console.log("Datos de Firestore del usuario:", data); // Verificar datos del usuario
+        this.nombreUsuario = data?.nombre || 'Usuario';
+      });
+    }
   }
 
   ionViewWillEnter() {
     this.menu.close();
   }
 
-  // Función para ir a la página de login
   iralogin() {
     this.router.navigate(['/login']);
   }
 
-  // Función para ir a la página de perfil
   iraperfil() {
     this.router.navigate(['/perfil']);
   }
 
-  // Alerta para iniciar entrenamiento
   async iniciarEntrenamiento() {
     const alert = await this.alertController.create({
       header: 'Entrenamiento',
@@ -53,7 +58,6 @@ export class HomePage implements OnInit {
     await alert.present();
   }
 
-  // Alerta para registrar comida
   async registrarComida() {
     const alert = await this.alertController.create({
       header: 'Registrar Comida',

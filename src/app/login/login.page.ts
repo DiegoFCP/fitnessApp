@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
+import { User } from '../models/user.model';
+import { LoadingController, NavController, ToastController } from '@ionic/angular';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-login',
@@ -7,59 +10,45 @@ import { Router, NavigationExtras } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  username: string = '';
-  password: string = '';
-
-  // Variables de error para los campos
+  user = { email: '', password: '' };
+  passwordType: string = 'password';
+  passwordIcon: string = 'eye-off';
   errorUsername: string = '';
   errorPassword: string = '';
 
-  // Variables para mostrar/ocultar la contraseña
-  passwordType: string = 'password';
-  passwordIcon: string = 'eye-off';  // Icono inicial para ocultar contraseña
+  constructor(
+    private router: Router,
+    private afAuth: AngularFireAuth,
+    private toastCtrl: ToastController
+  ) {}
 
-  constructor(private router: Router) {}
-
-  // Método para alternar la visibilidad de la contraseña
   togglePasswordVisibility() {
     this.passwordType = this.passwordType === 'password' ? 'text' : 'password';
     this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
   }
 
-  // Método de login con validaciones
-  onLogin() {
-    this.errorUsername = '';
-    this.errorPassword = '';
-
-    // Validaciones de campos vacíos o solo espacios
-    
-    const trimmedUsername = this.username.trim();
-    const trimmedPassword = this.password.trim();
-
-    if (!trimmedUsername) {
-      this.errorUsername = 'El campo Usuario es obligatorio y no puede contener solo espacios.';
+  async login() {
+    if (this.user.email && this.user.password) {
+      try {
+        const res = await this.afAuth.signInWithEmailAndPassword(this.user.email, this.user.password);
+        console.log('Usuario autenticado:', res);
+        this.router.navigate(['/home']);
+      } catch (error: any) {
+        this.showToast('Error al iniciar sesión: ' + error.message);
+      }
+    } else {
+      this.showToast('Por favor, ingresa tu correo y contraseña');
     }
+  }
 
-    if (!trimmedPassword) {
-      this.errorPassword = 'El campo Contraseña es obligatorio y no puede contener solo espacios.';
-    }
-
-    // Validación de longitud del nombre de usuario
-    if (trimmedUsername && (trimmedUsername.length < 4 || trimmedUsername.length > 12)) {
-      this.errorUsername = 'El nombre de usuario debe tener entre 4 y 12 caracteres';
-    }
-
-    // Validación de longitud de la contraseña
-    if (trimmedPassword && (trimmedPassword.length < 6 || trimmedPassword.length > 12)) {
-      this.errorPassword = 'La contraseña debe tener entre 6 y 12 caracteres';
-    }
-
-    
-    if (!this.errorUsername && !this.errorPassword) {
-      this.router.navigate(['/home'], {
-        queryParams: { nombreUsuario: trimmedUsername }  
-      });
-    }
+  async showToast(message: string) {
+    const toast = await this.toastCtrl.create({
+      message,
+      duration: 3000,
+      position: 'top',
+      color: 'danger'
+    });
+    toast.present();
   }
 
   irarestablecer() {
@@ -70,4 +59,3 @@ export class LoginPage {
     this.router.navigate(['/registro']);
   }
 }
-

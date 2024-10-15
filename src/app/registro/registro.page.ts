@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../models/user.model'
+import { User } from '../models/user.model';
 import { LoadingController, NavController, ToastController } from '@ionic/angular';
-import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-registro',
@@ -9,46 +10,49 @@ import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/compat/aut
   styleUrls: ['./registro.page.scss'],
 })
 export class RegistroPage implements OnInit {
-  username: string = ''; // Añade esta línea
-  user = {} as User;
-  email: string = '';
-  password: string = '';
+  user: User = { nombre: '', email: '', password: '' };  // Modificado para incluir los campos
 
   constructor(
     private toastCtrl: ToastController,
     private loadingCtrl: LoadingController,
     private afAuth: AngularFireAuth,
+    private firestore: AngularFirestore,
     private navCtrl: NavController,
   ) {}
 
   ngOnInit() {}
 
-  async register(user:User){
+  async register() {
     if (this.formValidation()) {
-      let loader = await this.loadingCtrl.create({
-        message: "Espere por favor"
-    })
-    await loader.present();
+      let loader = await this.loadingCtrl.create({ message: "Espere por favor" });
+      await loader.present();
 
-    try {
-      await this.afAuth.createUserWithEmailAndPassword(user.email, user.password).then(data =>{
-        console.log(data);
+      try {
+        const userCredential = await this.afAuth.createUserWithEmailAndPassword(this.user.email, this.user.password);
         
-        this.navCtrl.navigateRoot("home")
-        })
-    } catch (error:any) {
-      error.message = "Error al registrarse";
-      let errormessage = error.message || error.getLocalizedMessage();
+        // Guardar en Firestore
+        await this.firestore.collection('users').doc(userCredential.user?.uid).set({
+          uid: userCredential.user?.uid,
+          nombre: this.user.nombre,
+          email: this.user.email
+        });
 
-      this.showToast(errormessage)
-   }
-   
-   await loader.dismiss();
+        this.showToast("Usuario registrado exitosamente");
+        this.navCtrl.navigateRoot("login");
 
+      } catch (error: any) {
+        this.showToast("Error al registrarse: " + error.message);
+      } finally {
+        await loader.dismiss();
+      }
     }
   }
 
   formValidation() {
+    if (!this.user.nombre) {
+      this.showToast("Ingrese el nombre de usuario");
+      return false;
+    }
     if (!this.user.email) {
       this.showToast("Ingrese el email");
       return false;
@@ -59,17 +63,14 @@ export class RegistroPage implements OnInit {
     }
     return true;
   }
-  
 
-  showToast(message: string){
-    this.toastCtrl.create({
+  async showToast(message: string) {
+    const toast = await this.toastCtrl.create({
       message: message,
-      duration: 4000
-    }).then(toastData => toastData.present());
+      duration: 4000,
+      position: 'top',
+      color: 'warning'
+    });
+    toast.present();
   }
-
-
-
-
-
 }

@@ -7,7 +7,7 @@
 <ion-content class="ion-padding">
     <ion-item>
       <ion-label position="floating">Nombre de usuario</ion-label>
-      <ion-input [(ngModel)]="username" name="username" required></ion-input>
+      <ion-input [(ngModel)]="user.nombre" name="nombre" required></ion-input>
     </ion-item>
 
     <ion-item>
@@ -20,6 +20,6 @@
       <ion-input type="password" [(ngModel)]="user.password" name="password" required></ion-input>
     </ion-item>
 
-    <ion-button expand="full" type="submit" (click)="register(user)" >Registrarse</ion-button>
+    <ion-button expand="full" type="submit" (click)="register()">Registrarse</ion-button>
 
 </ion-content>
