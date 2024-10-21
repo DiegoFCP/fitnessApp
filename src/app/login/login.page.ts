@@ -15,11 +15,13 @@ export class LoginPage {
   passwordIcon: string = 'eye-off';
   errorUsername: string = '';
   errorPassword: string = '';
+  mantenerConectado: boolean = false;
 
   constructor(
     private router: Router,
     private afAuth: AngularFireAuth,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private loadingCtrl: LoadingController,
   ) {}
 
   togglePasswordVisibility() {
@@ -28,13 +30,31 @@ export class LoginPage {
   }
 
   async login() {
+    const loader = await this.loadingCtrl.create({
+      message: 'Espere por favor...',
+    })
+    await loader.present();
+
     if (this.user.email && this.user.password) {
       try {
         const res = await this.afAuth.signInWithEmailAndPassword(this.user.email, this.user.password);
+        const user = res.user;
+
+        if (user) {
+          if (this.mantenerConectado) {
+            localStorage.setItem('mantenerConectado', 'true');
+            localStorage.setItem('nombreUsuario', user.email || 'Usuario');
+          } else {
+            localStorage.removeItem('mantenerConectado');
+          }
         console.log('Usuario autenticado:', res);
         this.router.navigate(['/home']);
+        }
+        
       } catch (error: any) {
         this.showToast('Error al iniciar sesión: ' + error.message);
+      } finally {
+        await loader.dismiss();
       }
     } else {
       this.showToast('Por favor, ingresa tu correo y contraseña');

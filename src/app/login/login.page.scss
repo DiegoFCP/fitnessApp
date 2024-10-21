@@ -59,3 +59,23 @@ ion-item {
   margin: 0 auto 20px; 
   display: block; 
 }
+
+/* Estilos para la casilla de Mantenerme conectado */
+/* Estilos para la casilla de Mantenerme conectado */
+.remember-me-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Coloca el label a la izquierda y el checkbox a la derecha */
+  margin-top: 10px;
+}
+
+.remember-me-label {
+  font-size: 14px;
+  color: var(--ion-text-color);
+  margin-right: 184px;
+}
+
+ion-checkbox {
+  --size: 20px; /* Mantén el tamaño del checkbox */
+  margin-right: 185; /* Asegúrate de que no haya margen a la derecha */
+}

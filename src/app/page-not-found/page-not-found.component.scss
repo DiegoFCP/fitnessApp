@@ -1,24 +1,71 @@
-.not-found-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    background-color: var(--ion-background-color);
-  
+
+@media (max-width: 768px) {
+  .not-found-container {
+    ion-card {
+      width: 90%; /* Asegurarse de que el card sea más pequeño en pantallas pequeñas */
+      margin: 10px auto;
+    }
+
+    .logo {
+      width: 150px; /* Reduce el tamaño del logo en pantallas móviles */
+    }
+
     h1 {
-      font-size: 2.5rem;
-      color: var(--ion-color-danger);
+      font-size: 2rem; /* Ajusta el tamaño del título */
     }
-  
+
     p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
+      font-size: 1rem; /* Ajusta el tamaño del texto */
     }
-  
+
     ion-button {
-      --background: var(--ion-color-primary);
-      --border-radius: 8px;
+      max-width: 100%; /* Asegúrate de que el botón ocupe todo el ancho disponible */
     }
   }
-  
+}
+
+
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: var(--ion-background-color);
+
+  ion-card {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    color: var(--ion-color-danger);
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  ion-button {
+    --background: var(--ion-color-primary);
+    --border-radius: 8px;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    width: 200px; 
+    height: auto;
+    margin: 0 auto 20px; 
+    display: block; 
+  }
+}

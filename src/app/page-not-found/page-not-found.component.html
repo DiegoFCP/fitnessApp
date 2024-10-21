@@ -1,13 +1,16 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Página No Encontrada</ion-title>
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title class="app-title">MyFit</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding not-found-container">
-  <div class="content">
-    <h1>Error 404</h1>
-    <p>Lo sentimos, la página que buscas no existe.</p>
-    <ion-button expand="full" routerLink="/login">Volver al login</ion-button>
-  </div>
+<ion-content [fullscreen]="true" class="ion-padding not-found-container" color="light">
+  <ion-card>
+    <ion-card-content>
+      <ion-img src="assets/img/logo.png" alt="Logo de MyFit" class="logo"></ion-img>
+      <h1>Error 404</h1>
+      <p>Lo sentimos, la página que buscas no existe.</p>
+      <ion-button expand="block" routerLink="/login">Volver al login</ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
