@@ -25,12 +25,12 @@ export class HomePage implements OnInit {
   async ngOnInit() {
     this.menu.close();
 
-    // Recupera el nombre de usuario desde Firestore
+    // NOMBRE USUARIO DESDE FIRESTONE
     const user = await this.afAuth.currentUser;
-    console.log("Usuario autenticado:", user); // Verificar usuario autenticado
+    console.log("Usuario autenticado:", user); 
     if (user) {
       this.firestore.collection('users').doc(user.uid).valueChanges().subscribe((data: any) => {
-        console.log("Datos de Firestore del usuario:", data); // Verificar datos del usuario
+        console.log("Datos de Firestore del usuario:", data); 
         this.nombreUsuario = data?.nombre || 'Usuario';
       });
     }
@@ -66,5 +66,15 @@ export class HomePage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  // Método para cerrar sesión
+  logout() {
+    this.afAuth.signOut().then(() => {
+      console.log('Sesión cerrada');
+      this.router.navigate(['/login']);  // Redirige al login después de cerrar sesión
+    }).catch((error) => {
+      console.error('Error al cerrar sesión:', error);
+    });
   }
 }

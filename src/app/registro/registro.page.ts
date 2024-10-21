@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user.model';
+import { Router, NavigationExtras } from '@angular/router';
 import { LoadingController, NavController, ToastController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
@@ -18,6 +19,7 @@ export class RegistroPage implements OnInit {
     private afAuth: AngularFireAuth,
     private firestore: AngularFirestore,
     private navCtrl: NavController,
+    private router: Router,
   ) {}
 
   ngOnInit() {}
@@ -72,5 +74,9 @@ export class RegistroPage implements OnInit {
       color: 'warning'
     });
     toast.present();
+  }
+  
+  iralogin() {
+    this.router.navigate(['/login']);
   }
 }

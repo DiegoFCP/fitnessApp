@@ -15,11 +15,14 @@
           <ion-icon name="log-in-outline" slot="start"></ion-icon>
           <ion-label>Login</ion-label>
         </ion-item>
+        <ion-item class="menu-item" (click)="logout()">
+          <ion-icon name="log-out-outline" slot="start"></ion-icon>
+          <ion-label>Cerrar Sesión</ion-label>
+        </ion-item>
       </ion-list>
     </ion-content>
   </ion-menu>
 
- 
   <ion-grid class="ion-page" id="main-content">
     <ion-header >
       <ion-toolbar color="primary">
@@ -42,7 +45,6 @@
 
         <ion-row>
           <ion-col>
-            <!--INTERPOLACION -->
             <h2 style="color: var( --ion-color-primary-contrast);">¡Bienvenido {{ nombreUsuario }}!</h2>
             <p style="color: var(--ion-text-color);">Tu asistente personal para una vida más saludable.</p>
           </ion-col>
@@ -76,7 +78,6 @@
                   </ion-row>
                 </ion-grid>
 
-                
                 <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
               </ion-card-content>
             </ion-card>
