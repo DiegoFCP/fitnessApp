@@ -15,7 +15,7 @@
         <form (ngSubmit)="login()">
           <ion-list>
             <ion-item>
-              <ion-label position="fixed">Usuario</ion-label>
+              <ion-label position="fixed">Correo</ion-label>
               <ion-input type="text" [(ngModel)]="user.email" name="username" minlength="4" maxlength="30" required></ion-input>
             </ion-item>
             <ion-text color="danger" *ngIf="errorUsername">{{ errorUsername }}</ion-text>

@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AlertController, MenuController } from '@ionic/angular'; 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { User } from '../models/user.model';
+import { HttpClient } from '@angular/common/http'; // Importa HttpClient para hacer la solicitud a la API
 
 @Component({
   selector: 'app-home',
@@ -12,6 +12,8 @@ import { User } from '../models/user.model';
 })
 export class HomePage implements OnInit {
   nombreUsuario: string = 'Usuario';  
+  healthTip: string = ''; // Variable para almacenar el tip de salud
+  apiUrl: string = 'https://frasesapi.vercel.app/v1/frases/aleatoria/?categoria=salud'; // URL de la API
 
   constructor(
     private router: Router, 
@@ -19,13 +21,14 @@ export class HomePage implements OnInit {
     private alertController: AlertController, 
     private menu: MenuController,
     private afAuth: AngularFireAuth,
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    private http: HttpClient // Inyecta HttpClient
   ) {}
 
   async ngOnInit() {
     this.menu.close();
 
-    // NOMBRE USUARIO DESDE FIRESTONE
+    // NOMBRE USUARIO DESDE FIRESTORE
     const user = await this.afAuth.currentUser;
     console.log("Usuario autenticado:", user); 
     if (user) {
@@ -34,6 +37,17 @@ export class HomePage implements OnInit {
         this.nombreUsuario = data?.nombre || 'Usuario';
       });
     }
+
+    // OBTENER EL TIP DE SALUD DESDE EL SERVICIO (API Frases)
+    this.http.get(this.apiUrl).subscribe(
+      (response: any) => {
+        this.healthTip = response.frase.frase || 'Mantén una vida saludable.';
+        console.log('Frase de salud:', this.healthTip);
+      },
+      (error) => {
+        console.error('Error al obtener el tip de salud:', error);
+      }
+    );
   }
 
   ionViewWillEnter() {
