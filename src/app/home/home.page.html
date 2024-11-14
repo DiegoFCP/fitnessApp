@@ -63,7 +63,7 @@
                     <ion-col size="4" class="stat">
                       <ion-icon name="walk-outline" size="large"></ion-icon>
                       <p>Pasos</p>
-                      <h2 style="color: var(--ion-color-primary-contrast);">7,542</h2>
+                      <h2 style="color: var(--ion-color-primary-contrast);">{{ stepCount }}</h2>
                     </ion-col>
                     <ion-col size="4" class="stat">
                       <ion-icon name="flame-outline" size="large" color="warning"></ion-icon>
@@ -77,8 +77,6 @@
                     </ion-col>
                   </ion-row>
                 </ion-grid>
-
-                <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
               </ion-card-content>
             </ion-card>
           </ion-col>

@@ -1,19 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertController, MenuController } from '@ionic/angular'; 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { HttpClient } from '@angular/common/http'; // Importa HttpClient para hacer la solicitud a la API
+import { HttpClient } from '@angular/common/http';
+import { PedometerService } from '../services/podometro.service';
+import { Subscription } from 'rxjs';
+import { IPedometerData } from '@ionic-native/pedometer';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, OnDestroy {
+  stepCount: number = 0;
   nombreUsuario: string = 'Usuario';  
-  healthTip: string = ''; // Variable para almacenar el tip de salud
-  apiUrl: string = 'https://frasesapi.vercel.app/v1/frases/aleatoria/?categoria=salud'; // URL de la API
+  healthTip: string = '';
+  apiUrl: string = 'https://frasesapi.vercel.app/v1/frases/aleatoria/?categoria=salud';
+  stepSubscription?: Subscription;
 
   constructor(
     private router: Router, 
@@ -22,44 +27,72 @@ export class HomePage implements OnInit {
     private menu: MenuController,
     private afAuth: AngularFireAuth,
     private firestore: AngularFirestore,
-    private http: HttpClient // Inyecta HttpClient
+    private http: HttpClient,
+    private pedometerService: PedometerService
   ) {}
 
   async ngOnInit() {
     this.menu.close();
 
-    // NOMBRE USUARIO DESDE FIRESTORE
     const user = await this.afAuth.currentUser;
-    console.log("Usuario autenticado:", user); 
     if (user) {
       this.firestore.collection('users').doc(user.uid).valueChanges().subscribe((data: any) => {
-        console.log("Datos de Firestore del usuario:", data); 
         this.nombreUsuario = data?.nombre || 'Usuario';
       });
     }
 
-    // OBTENER EL TIP DE SALUD DESDE EL SERVICIO (API Frases)
     this.http.get(this.apiUrl).subscribe(
       (response: any) => {
         this.healthTip = response.frase.frase || 'Mantén una vida saludable.';
-        console.log('Frase de salud:', this.healthTip);
       },
       (error) => {
         console.error('Error al obtener el tip de salud:', error);
       }
     );
+
+    await this.startStepTracking();
+  }
+
+  async startStepTracking() {
+    this.stepSubscription = this.pedometerService.stepData$.subscribe(
+      (data: IPedometerData) => {
+        this.stepCount = data.numberOfSteps;
+      },
+      (error: any) => {
+        console.error('Error al recibir datos del podómetro:', error);
+      }
+    );
+
+    this.pedometerService.startTracking();
+  }
+
+  stopStepTracking() {
+    this.pedometerService.stopTracking();
+    this.stepSubscription?.unsubscribe();
   }
 
   ionViewWillEnter() {
     this.menu.close();
   }
 
-  iralogin() {
-    this.router.navigate(['/login']);
+  logout() {
+    this.afAuth.signOut().then(() => {
+      this.router.navigate(['/login']);
+    }).catch((error) => {
+      console.error('Error al cerrar sesión:', error);
+    });
+  }
+
+  ngOnDestroy() {
+    this.stepSubscription?.unsubscribe();
   }
 
   iraperfil() {
     this.router.navigate(['/perfil']);
+  }
+
+  iralogin() {
+    this.router.navigate(['/login']);
   }
 
   async iniciarEntrenamiento() {
@@ -68,7 +101,6 @@ export class HomePage implements OnInit {
       message: 'Iniciando entrenamiento...',
       buttons: ['OK'],
     });
-
     await alert.present();
   }
 
@@ -78,17 +110,6 @@ export class HomePage implements OnInit {
       message: 'Registrando comida...',
       buttons: ['OK'],
     });
-
     await alert.present();
-  }
-
-  // Método para cerrar sesión
-  logout() {
-    this.afAuth.signOut().then(() => {
-      console.log('Sesión cerrada');
-      this.router.navigate(['/login']);  // Redirige al login después de cerrar sesión
-    }).catch((error) => {
-      console.error('Error al cerrar sesión:', error);
-    });
   }
 }

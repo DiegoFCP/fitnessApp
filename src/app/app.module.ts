@@ -15,6 +15,10 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 
+import { Pedometer } from '@ionic-native/pedometer/ngx';
+import { PedometerService } from './services/podometro.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +36,9 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideAnimationsAsync(),
-    provideHttpClient() // Proveedor de HttpClient con nueva configuración
+    provideHttpClient(), // Proveedor de HttpClient con nueva configuración
+    Pedometer,
+    PedometerService,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
