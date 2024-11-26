@@ -1,54 +1,53 @@
 
 
 .home-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: var(--ion-background-color); 
-    color: var(--ion-text-color); 
-    padding: 20px;
-  }
-  
-  ion-card {
-    width: 100%;
-    max-width: 400px;
-    margin: 20px auto; 
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  }
-  
-  h2 {
-    font-size: 24px;
-    color: var(--ion-color-primary);
-    margin-bottom: 20px;
-  }
-  
-  ion-item {
-    margin-bottom: 15px;
-  }
-  
-  .profile-avatar {
-    width: 100px;
-    height: 100px;
-    margin: 20px auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background-color: var(--ion-background-color); 
-  }
-  
-  .center-button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-  }
-  
-  .action-button {
-    margin-top: 20px;
-    background-color: var(--ion-color-primary); 
-    color: var(--ion-color-primary-contrast); 
-  }
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--ion-background-color); 
+  color: var(--ion-text-color); 
+  padding: 20px;
+}
+
+ion-card {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto; 
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+h2 {
+  font-size: 24px;
+  color: var(--ion-text-color);
+  margin-bottom: 20px;
+}
+
+ion-item {
+  margin-bottom: 15px;
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: var(--ion-background-color); 
+}
+
+.center-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.action-button {
+  margin-top: 20px;
+  background-color: var(--ion-color-primary); 
+  color: var(--ion-color-primary-contrast); 
+}
