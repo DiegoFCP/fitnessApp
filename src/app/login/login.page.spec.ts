@@ -5,6 +5,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule, ToastController, LoadingController } from '@ionic/angular';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { provideRouter } from '@angular/router';
+
 
 // Mock de AngularFireAuth
 const mockAngularFireAuth = {
@@ -56,7 +58,7 @@ describe('LoginPage', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call signInWithEmailAndPassword when login is triggered', async () => {
+  it('deberia llamar signInWithEmailAndPassword al loguear', async () => {
     // Simular inputs de usuario
     component.user.email = 'test@example.com';
     component.user.password = 'password123';
@@ -69,7 +71,7 @@ describe('LoginPage', () => {
     );
   });
 
-  it('should show a toast on login failure', async () => {
+  it('deberia mostrar mensaje flotante al error en autenticación', async () => {
     // Mockear un error en la autenticación
     mockAngularFireAuth.signInWithEmailAndPassword.and.throwError('Auth error');
 
