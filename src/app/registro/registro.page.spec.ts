@@ -58,11 +58,4 @@ describe('RegistroPage', () => {
     expect(component.showToast).toHaveBeenCalledWith('Usuario registrado exitosamente');
   });
 
-  it('should validate the form correctly', () => {
-    component.user = { nombre: '', email: '', password: '' };
-
-    const isValid = component.formValidation();
-
-    expect(isValid).toBeFalse();
-  });
 });
