@@ -46,7 +46,7 @@ describe('RestablecerPage', () => {
   it('deberia mostrar error si el campo de usuario se llena con espacios', () => {
     component.username = '   ';
     component.onRecuperar();
-    expect(component.errorMessage).toBe('El campo Usuario no puede contener solo espacios.');
+    expect(component.errorMessage).toBe('El campo Usuario no puede estar vacío o contener solo espacios.');
     expect(mockRouter.navigate).not.toHaveBeenCalled();
   });
 });
