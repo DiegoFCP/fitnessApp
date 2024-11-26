@@ -5,7 +5,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireModule } from '@angular/fire/compat';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs'; // Para simular observables
+import { of } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { PedometerService } from '../services/podometro.service';
 
@@ -22,7 +22,7 @@ const mockPedometerService = {
 
 const mockActivatedRoute = {
   snapshot: {
-    params: { id: '123' }, // Simulación de parámetros de ruta
+    params: { id: '123' }, // Parametros de ruta
   },
 };
 
@@ -36,7 +36,7 @@ describe('HomePage', () => {
       imports: [
         IonicModule.forRoot(),
         HttpClientTestingModule, // Mock para HttpClient
-        AngularFireModule.initializeApp(environment.FIREBASE_CONFIG), // Configuración de Firebase
+        AngularFireModule.initializeApp(environment.FIREBASE_CONFIG), // CONFIG de Firebase
       ],
       providers: [
         { provide: AngularFireAuth, useValue: mockAngularFireAuth }, // Mock de AngularFireAuth
